@@ -48,9 +48,9 @@ case $METHOD in
 		;;
 	rm)
 		# Remove files.
-		[ -f "$VIMDIR/ftdetect/$FNAME" ] && \
+		[ -e "$VIMDIR/ftdetect/$FNAME" -o -L "$VIMDIR/ftdetect/$FNAME" ] && \
 			rm "$VIMDIR/ftdetect/$FNAME"
-		[ -f "$VIMDIR/syntax/$FNAME" ] && \
+		[ -e "$VIMDIR/syntax/$FNAME" -o -L "$VIMDIR/syntax/$FNAME" ] && \
 			rm "$VIMDIR/syntax/$FNAME"
 		;;
 esac
