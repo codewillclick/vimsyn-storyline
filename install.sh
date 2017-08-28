@@ -43,8 +43,8 @@ case $METHOD in
 		;;
 	cp)
 		# Copy files over.
-		cp "$PWD/ftdetect/$FNAME" "$VIMDIR/ftdetect/"
-		cp "$PWD/syntax/$FNAME" "$VIMDIR/syntax/"
+		cp -f "$PWD/ftdetect/$FNAME" "$VIMDIR/ftdetect/"
+		cp -f "$PWD/syntax/$FNAME" "$VIMDIR/syntax/"
 		;;
 	rm)
 		# Remove files.
