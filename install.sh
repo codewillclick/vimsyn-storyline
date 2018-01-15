@@ -9,6 +9,7 @@
 
 VIMDIR=~/.vim
 FNAME=storyline.vim
+FDIR="$PWD"
 METHOD='ln'
 while [ $# -gt 0 ]; do
 	[ "$1" = '-l' ] && METHOD='ln'
@@ -20,9 +21,25 @@ while [ $# -gt 0 ]; do
 	elif [ "$1" = '-f' ]; then
 		FNAME="$2"
 		shift
+	elif [ "$1" = '-m' ]; then
+		FDIR="$2"
+		shift
 	fi
 	shift
 done
+
+function test_module_dir() {
+	DIR=`echo "$1" | sed 's#/$##'`
+	[ -d "$DIR/ftdetect" ] || return 1
+	[ -d "$DIR/syntax" ]   || return 1
+	echo "$DIR"
+	return 0
+}
+
+# If the fname has a matching directory, set FDIR to that.
+if RES=`test_module_dir "$(echo $FNAME | sed 's/\.vim$//')"`; then
+	FDIR="$PWD/$RES"
+fi
 
 # Flag usage intended for multiple asserts.
 FLAG=false
@@ -38,13 +55,13 @@ mkdir -p "$VIMDIR/syntax"
 case $METHOD in
 	ln)
 		# Create symlinks.
-		ln -s "$PWD/ftdetect/$FNAME" "$VIMDIR/ftdetect/"
-		ln -s "$PWD/syntax/$FNAME"   "$VIMDIR/syntax/"
+		ln -sf "$FDIR/ftdetect/$FNAME" "$VIMDIR/ftdetect/"
+		ln -sf "$FDIR/syntax/$FNAME"   "$VIMDIR/syntax/"
 		;;
 	cp)
 		# Copy files over.
-		cp -f "$PWD/ftdetect/$FNAME" "$VIMDIR/ftdetect/"
-		cp -f "$PWD/syntax/$FNAME" "$VIMDIR/syntax/"
+		cp -f "$FDIR/ftdetect/$FNAME" "$VIMDIR/ftdetect/"
+		cp -f "$FDIR/syntax/$FNAME" "$VIMDIR/syntax/"
 		;;
 	rm)
 		# Remove files.
