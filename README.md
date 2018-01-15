@@ -35,4 +35,4 @@ Install option defaults to `-l`.
 #### Modules
 Modules (I'm not sure what to call them, syntax file-layouts?), or directories with file structures to copy into `VIMDIR`, are now in use.  There are two ways to select a module.
 - `-m` : targets a specific module directory
-- `-f` : if there exists a module with a directory name matching the input `*.vim` file, sitting within the repo, that will be selected as the module
+- `-f` : if there exists a module with a directory name matching the input `*.vim` file sitting within the repo, that will be selected as the module
