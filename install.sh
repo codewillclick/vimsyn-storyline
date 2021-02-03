@@ -55,20 +55,36 @@ mkdir -p "$VIMDIR/syntax"
 case $METHOD in
 	ln)
 		# Create symlinks.
-		ln -sf "$FDIR/ftdetect/$FNAME" "$VIMDIR/ftdetect/"
-		ln -sf "$FDIR/syntax/$FNAME"   "$VIMDIR/syntax/"
+		# TODO Maybe I can stick all these OK FAILEDs after esac?
+		echo creating symlinks...
+		ln -sf "$FDIR/ftdetect/$FNAME" "$VIMDIR/ftdetect/" && \
+			echo "ftdetect/$FNAME" OK || \
+			echo "ftdetect/$FNAME" FAILED
+		ln -sf "$FDIR/syntax/$FNAME"   "$VIMDIR/syntax/" && \
+			echo "syntax/$FNAME" OK || \
+			echo "syntax/$FNAME" FAILED
 		;;
 	cp)
 		# Copy files over.
-		cp -f "$FDIR/ftdetect/$FNAME" "$VIMDIR/ftdetect/"
-		cp -f "$FDIR/syntax/$FNAME" "$VIMDIR/syntax/"
+		echo copying files...
+		cp -f "$FDIR/ftdetect/$FNAME" "$VIMDIR/ftdetect/" && \
+			echo "ftdetect/$FNAME" OK || \
+			echo "ftdetect/$FNAME" FAILED
+		cp -f "$FDIR/syntax/$FNAME" "$VIMDIR/syntax/" && \
+			echo "syntax/$FNAME" OK || \
+			echo "syntax/$FNAME" FAILED
 		;;
 	rm)
 		# Remove files.
+		echo removing files...
 		[ -e "$VIMDIR/ftdetect/$FNAME" -o -L "$VIMDIR/ftdetect/$FNAME" ] && \
-			rm "$VIMDIR/ftdetect/$FNAME"
+			rm "$VIMDIR/ftdetect/$FNAME" && \
+				echo "ftdetect/$FNAME" OK || \
+				echo "ftdetect/$FNAME" FAILED
 		[ -e "$VIMDIR/syntax/$FNAME" -o -L "$VIMDIR/syntax/$FNAME" ] && \
-			rm "$VIMDIR/syntax/$FNAME"
+			rm "$VIMDIR/syntax/$FNAME" && \
+				echo "syntax/$FNAME" OK || \
+				echo "syntax/$FNAME" FAILED
 		;;
 esac
 

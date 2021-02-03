@@ -8,25 +8,25 @@ endif
 
 syn match tab0     '^\. [^:]*:\?.*$'  contains=name,postname nextgroup=postname skipwhite
 syn match tab0next '^  \S.*$'     skipwhite
-syn match tab1     '^\t\.'      skipwhite
-syn match tab1     '^  \.'      skipwhite
-syn match tab2     '^\t\t\.'    skipwhite
-syn match tab2     '^    \.'    skipwhite
-syn match tab3     '^\t\t\t\.'  skipwhite
-syn match tab3     '^      \.'  skipwhite
+syn match tab1     '^\t\. '      skipwhite
+syn match tab1     '^  \. '      skipwhite
+syn match tab2     '^\t\t\. '    skipwhite
+syn match tab2     '^    \. '    skipwhite
+syn match tab3     '^\t\t\t\. '  skipwhite
+syn match tab3     '^      \. '  skipwhite
 
-syn match tab5     '^\t\t\t\t\t\.'       skipwhite
-syn match tab5     '^          \.'       skipwhite
-syn match tab6     '^\t\t\t\t\t\t\.'     skipwhite
-syn match tab6     '^            \.'     skipwhite
-syn match tab7     '^\t\t\t\t\t\t\t\.'   skipwhite
-syn match tab7     '^              \.'   skipwhite
-syn match tab8     '^\t\t\t\t\t\t\t\t\.' skipwhite
-syn match tab8     '^                \.' skipwhite
+syn match tab5     '^\t\t\t\t\t\. '       skipwhite
+syn match tab5     '^          \. '       skipwhite
+syn match tab6     '^\t\t\t\t\t\t\. '     skipwhite
+syn match tab6     '^            \. '     skipwhite
+syn match tab7     '^\t\t\t\t\t\t\t\. '   skipwhite
+syn match tab7     '^              \. '   skipwhite
+syn match tab8     '^\t\t\t\t\t\t\t\t\. ' skipwhite
+syn match tab8     '^                \. ' skipwhite
 
-syn match dash     '^\t*-'  skipwhite
-syn match ex       '^\t*x'  skipwhite
-syn match tilde    '^\t*\~' skipwhite
+syn match dash     '^\t*- '  skipwhite
+syn match ex       '^\t*x '  skipwhite
+syn match tilde    '^\t*\~ ' skipwhite
 
 syn match name '\w+:' contained skipwhite
 syn match postname ':.*$' contained skipwhite
