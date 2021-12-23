@@ -7,7 +7,7 @@ endif
 " Matching tokens/whatnot
 
 syn match tab0     '^\. [^:]*:\?.*$'  contains=name,postname nextgroup=postname skipwhite
-syn match tab0next '^  \S.*$'     skipwhite
+syn match tab0next '^  \S.*$'    skipwhite
 syn match tab1     '^\t\. '      skipwhite
 syn match tab1     '^  \. '      skipwhite
 syn match tab2     '^\t\t\. '    skipwhite
@@ -23,6 +23,15 @@ syn match tab7     '^\t\t\t\t\t\t\t\. '   skipwhite
 syn match tab7     '^              \. '   skipwhite
 syn match tab8     '^\t\t\t\t\t\t\t\t\. ' skipwhite
 syn match tab8     '^                \. ' skipwhite
+
+syn match tab10    '^\t\t\t\t\t\t\t\t\t\t\. '       skipwhite
+syn match tab10    '^                    \. '       skipwhite
+syn match tab11    '^\t\t\t\t\t\t\t\t\t\t\t\. '     skipwhite
+syn match tab11    '^                      \. '     skipwhite
+syn match tab12    '^\t\t\t\t\t\t\t\t\t\t\t\t\. '   skipwhite
+syn match tab12    '^                        \. '   skipwhite
+syn match tab13    '^\t\t\t\t\t\t\t\t\t\t\t\t\t\. ' skipwhite
+syn match tab13    '^                          \. ' skipwhite
 
 syn match dash     '^\t*- '  skipwhite
 syn match ex       '^\t*x '  skipwhite
@@ -50,6 +59,11 @@ hi def link tab5  Type
 hi def link tab6  Constant
 hi def link tab7  Statement
 hi def link tab8  Comment
+
+hi def link tab10 Type
+hi def link tab11 Constant
+hi def link tab12 Statement
+hi def link tab13 Comment
 
 hi def link dash  Constant
 hi def link ex    Type
